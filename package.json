@@ -1,0 +1,60 @@
+{
+  "name": "@stricahq/cardanoscan-js",
+  "version": "1.0.0",
+  "description": "Cardanoscan API Service Javascript SDK",
+  "main": "dist/index.js",
+  "keywords": [
+    "cardanoscan",
+    "strica",
+    "cardano"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StricaHQ/cardanoscan-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StricaHQ/cardanoscan-js/issues"
+  },
+  "homepage": "https://github.com/StricaHQ/cardanoscan-js#readme",
+  "scripts": {
+    "build": "rm -rf dist && tsc && webpack",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'",
+    "docs": "rm -rf docs && typedoc"
+  },
+  "author": "Strica",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "axios": "^1.6.8"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.1",
+    "@types/lodash": "^4.14.182",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "chai": "^4.3.6",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "mocha": "^10.0.0",
+    "prettier": "^3.2.5",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-loader": "^9.3.0",
+    "ts-mocha": "^10.0.0",
+    "typedoc": "^0.25.9",
+    "typescript": "^5.3.3",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "packageManager": "yarn@4.1.0"
+}
