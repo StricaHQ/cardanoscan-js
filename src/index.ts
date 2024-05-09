@@ -1,14 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
-import {
-  GetAddressBalanceParams,
-  GetAssetDetailsParams,
-  GetAssetsByPolicyIdParams,
-  GetAssetByAddressParams,
-  GetBlockDetailsParams,
-} from "./types/reqTypes";
-
-import { Address, Block, Token, PaginatedTokens, NetworkState } from "./types/resTypes";
+import * as reqTypes from "./types/reqTypes";
+import * as resTypes from "./types/resTypes";
 
 import { getAddressBalance } from "./apis/address";
 import { getAssetDetails, getAssetsByPolicyId, getAssetsByAddress } from "./apis/asset";
@@ -30,34 +23,36 @@ export class CardanoscanAPI {
   }
 
   /* Address */
-  getAddressBalance(params: GetAddressBalanceParams): Promise<Address> {
+  getAddressBalance(params: reqTypes.GetAddressBalanceParams): Promise<resTypes.Address> {
     return getAddressBalance(this.instance, params);
   }
 
   /* Assets */
-  getAssetDetails(params: GetAssetDetailsParams): Promise<Token> {
+  getAssetDetails(params: reqTypes.GetAssetDetailsParams): Promise<resTypes.Token> {
     return getAssetDetails(this.instance, params);
   }
 
-  getAssetsByPolicyId(params: GetAssetsByPolicyIdParams): Promise<PaginatedTokens> {
+  getAssetsByPolicyId(
+    params: reqTypes.GetAssetsByPolicyIdParams
+  ): Promise<resTypes.PaginatedTokens> {
     return getAssetsByPolicyId(this.instance, params);
   }
 
-  getAssetsByAddress(params: GetAssetByAddressParams): Promise<PaginatedTokens> {
+  getAssetsByAddress(params: reqTypes.GetAssetByAddressParams): Promise<resTypes.PaginatedTokens> {
     return getAssetsByAddress(this.instance, params);
   }
 
   /* Blocks */
-  getBlockDetails(params: GetBlockDetailsParams): Promise<Block> {
+  getBlockDetails(params: reqTypes.GetBlockDetailsParams): Promise<resTypes.Block> {
     return getBlockDetails(this.instance, params);
   }
 
-  getLatestBlockDetails(): Promise<Block> {
+  getLatestBlockDetails(): Promise<resTypes.Block> {
     return getLatestBlockDetails(this.instance);
   }
 
   /* Network */
-  getNetworkDetails(): Promise<NetworkState> {
+  getNetworkDetails(): Promise<resTypes.NetworkState> {
     return getNetworkDetails(this.instance);
   }
 }
