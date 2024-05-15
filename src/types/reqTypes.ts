@@ -21,3 +21,53 @@ export type GetAssetByAddressParams = {
   pageNo: number;
   limit?: number;
 };
+
+export type GetPoolDetails = {
+  poolId: string;
+};
+
+export type GetPoolStatsParams = {
+  poolId: string;
+};
+
+export type GetPoolListParams = {
+  pageNo: number;
+  search?: string;
+  retiredPools?: boolean;
+  sortBy?: "name" | "margin" | "pledge" | "random";
+  order?: "asc" | "desc";
+  limit?: number;
+};
+
+export type GetPoolListExpireParams = {
+  pageNo: number;
+  search?: string;
+  limit?: number;
+};
+
+export type GetExpiredPoolsParams = {
+  pageNo: number;
+  search?: string;
+  limit?: number;
+};
+
+export type GetStakeKeyDetailsParams = {
+  rewardAddress: string;
+};
+
+export type GetAddressesByStakeKey = {
+  rewardAddress: string;
+  pageNo: number;
+  limit?: number;
+};
+
+export type GetTransactionDetailsParams = {
+  hash: string;
+};
+
+export type GetTransactionListByAddressParams = {
+  address: string;
+  pageNo: number;
+  limit?: number;
+  order?: "asc" | "desc";
+};

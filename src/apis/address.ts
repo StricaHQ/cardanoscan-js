@@ -1,12 +1,12 @@
 import { AxiosInstance } from "axios";
-import { Address } from "../types/resTypes";
-import { GetAddressBalanceParams } from "../types/reqTypes";
+import * as reqTypes from "../types/reqTypes";
+import * as resTypes from "../types/resTypes";
 
 // eslint-disable-next-line import/prefer-default-export
 export async function getAddressBalance(
   instance: AxiosInstance,
-  params: GetAddressBalanceParams
-): Promise<Address> {
-  const response = await instance.get<Address>("/address/balance", { params });
+  params: reqTypes.GetAddressBalanceParams
+): Promise<resTypes.Address> {
+  const response = await instance.get<resTypes.Address>("/address/balance", { params });
   return response.data;
 }
