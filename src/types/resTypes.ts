@@ -17,14 +17,23 @@ export type Block = {
   totalOutput: string;
   slotLeader: string | null;
   bodySize: number;
+  protocolVersion?: string;
   vrfVKey?: string;
+  nonceVrf?: {
+    natural: string;
+    cert: string;
+  };
+  leaderVrf?: {
+    natural: string;
+    cert: string;
+  };
+  vrfResult?: Array<string>;
   operationalCert?: {
     hotVKey: string;
     sequenceNumber: number;
     kesPeriod: number;
     sigma: string;
   };
-  protocolVersion?: string;
 };
 
 export type PaginatedBlocks = {
@@ -121,8 +130,7 @@ export type PaginatedTokens = {
 
 export type StakeKeyDetails = {
   poolId?: string | null;
-  stakeHex: string;
-  stakePub?: string;
+  rewardAddress: string;
   stake?: string;
   status?: boolean;
   pointer?: string;
@@ -149,7 +157,7 @@ export type TransactionInput = {
     assetId: string;
     value: string;
   }>;
-  data?: {
+  datum?: {
     hash: string;
     value: string;
   };
@@ -167,7 +175,7 @@ export type TransactionOutput = {
     assetId: string;
     value: string;
   }>;
-  data?: {
+  datum?: {
     hash: string;
     value: string;
   };
@@ -178,25 +186,25 @@ export type TransactionOutput = {
 export type TransactionCertificates = {
   stakeRegistrations?: Array<{
     index: number;
-    stakeHex: string;
+    rewardAddress: string;
   }>;
   stakeDeRegistrations?: Array<{
     index: number;
-    stakeHex: string;
+    rewardAddress: string;
   }>;
   stakeDelegations?: Array<{
     index: number;
-    stakeHex: string;
+    rewardAddress: string;
     poolKeyHash: string;
   }>;
   // TODO: fix type
   // poolRegistrations?: Array<DbTypes.PoolRegistrationCertT>;
   // poolDeRegistrations?: Array<DbTypes.PoolRetirementCertT>;
-  instantRewards?: Array<{
+  instantaneousRewards?: Array<{
     index: number;
     pot: number;
     rewards: Array<{
-      stakeHex: string;
+      rewardAddress: string;
       amount: string;
     }>;
     value: string;
@@ -225,7 +233,7 @@ export type Transaction = {
   // referenceInputs?: Array<DbTypes.ReferenceInput>;
   certificate?: TransactionCertificates;
   withdrawals?: Array<{
-    stakeHex: string;
+    rewardAddress: string;
     amount: string;
   }>;
   // TODO: fix type
