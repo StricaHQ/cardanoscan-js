@@ -133,7 +133,6 @@ export type StakeKeyDetails = {
   rewardAddress: string;
   stake?: string;
   status?: boolean;
-  pointer?: string;
   rewardsAvailable?: string;
   rewardsWithdrawn?: string;
 };
@@ -222,7 +221,6 @@ export type Transaction = {
   blockHeight: number;
   absSlot: number;
   timestamp: Date;
-  totalOutput: string;
   index: number;
   inputs: Array<TransactionInput>;
   collateral?: Array<TransactionInput>;
