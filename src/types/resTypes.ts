@@ -1,3 +1,6 @@
+import { Redeemer } from "./core";
+import * as DbTypes from "./db";
+
 export type Address = {
   hash: string;
   balance: string;
@@ -46,8 +49,8 @@ export type PaginatedBlocks = {
 export type NetworkState =
   | {
       circulatingSupply: string;
-      treasury: string;
       reserves: string;
+      treasury: string;
       liveCirculatingSupply: string;
     }
   | undefined;
@@ -122,10 +125,10 @@ export type Token = {
 };
 
 export type PaginatedTokens = {
-  tokens: Array<Token>;
-  count: number;
   pageNo: number;
   limit: number;
+  tokens: Array<Token>;
+  count: number;
 };
 
 export type StakeKeyDetails = {
@@ -160,8 +163,7 @@ export type TransactionInput = {
     hash: string;
     value: string;
   };
-  // TODO: fix type
-  // scriptRef?: DbTypes.ScriptRef;
+  scriptRef?: DbTypes.ScriptRef;
 };
 
 export type TransactionOutput = {
@@ -178,8 +180,7 @@ export type TransactionOutput = {
     hash: string;
     value: string;
   };
-  // TODO: fix type
-  // scriptRef?: DbTypes.ScriptRef;
+  scriptRef?: DbTypes.ScriptRef;
 };
 
 export type TransactionCertificates = {
@@ -196,9 +197,8 @@ export type TransactionCertificates = {
     rewardAddress: string;
     poolKeyHash: string;
   }>;
-  // TODO: fix type
-  // poolRegistrations?: Array<DbTypes.PoolRegistrationCertT>;
-  // poolDeRegistrations?: Array<DbTypes.PoolRetirementCertT>;
+  poolRegistrations?: Array<DbTypes.PoolRegistrationCertT>;
+  poolDeRegistrations?: Array<DbTypes.PoolRetirementCertT>;
   instantaneousRewards?: Array<{
     index: number;
     pot: number;
@@ -208,8 +208,7 @@ export type TransactionCertificates = {
     }>;
     value: string;
   }>;
-  // TODO: fix type
-  // genesisDelegations?: Array<DbTypes.GenDelegationCertT>;
+  genesisDelegations?: Array<DbTypes.GenDelegationCertT>;
 };
 
 export type Transaction = {
@@ -227,28 +226,23 @@ export type Transaction = {
   outputs: Array<TransactionOutput>;
   collateralOutput?: TransactionOutput;
   totalCollateral?: string;
-  // TODO: fix type
-  // referenceInputs?: Array<DbTypes.ReferenceInput>;
+  referenceInputs?: Array<DbTypes.ReferenceInput>;
   certificate?: TransactionCertificates;
   withdrawals?: Array<{
     rewardAddress: string;
     amount: string;
   }>;
-  // TODO: fix type
-  // metadata?: DbTypes.Metadata;
+  metadata?: DbTypes.Metadata;
   update?: {
     proposals: Array<{
       genesisHash: string;
-      // TODO: fix type
-      // parameter: DbTypes.ProtocolParameter;
+      parameter: DbTypes.ProtocolParameter;
     }>;
     epoch: number;
   };
-  // TODO: fix type
-  // mint?: Array<DbTypes.Token>;
+  mint?: Array<DbTypes.Token>;
   scriptDataHash?: string;
-  // TODO: fix type
-  // redeemers?: Array<Redeemer>;
+  redeemers?: Array<Redeemer>;
   status: boolean;
   ttl?: {
     timestamp: Date;
@@ -257,8 +251,8 @@ export type Transaction = {
 };
 
 export type PaginatedTransactions = {
-  transactions: Array<Transaction>;
-  count: number;
   pageNo: number;
   limit: number;
+  transactions: Array<Transaction>;
+  count: number;
 };
