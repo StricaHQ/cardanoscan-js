@@ -1,5 +1,4 @@
-import { Redeemer } from "./core";
-import * as DbTypes from "./db";
+import * as Types from "./core";
 
 export type Address = {
   hash: string;
@@ -163,7 +162,7 @@ export type TransactionInput = {
     hash: string;
     value: string;
   };
-  scriptRef?: DbTypes.ScriptRef;
+  scriptRef?: Types.ScriptRef;
 };
 
 export type TransactionOutput = {
@@ -180,7 +179,7 @@ export type TransactionOutput = {
     hash: string;
     value: string;
   };
-  scriptRef?: DbTypes.ScriptRef;
+  scriptRef?: Types.ScriptRef;
 };
 
 export type TransactionCertificates = {
@@ -197,8 +196,8 @@ export type TransactionCertificates = {
     rewardAddress: string;
     poolKeyHash: string;
   }>;
-  poolRegistrations?: Array<DbTypes.PoolRegistrationCertT>;
-  poolDeRegistrations?: Array<DbTypes.PoolRetirementCertT>;
+  poolRegistrations?: Array<Types.PoolRegistrationCertT>;
+  poolDeRegistrations?: Array<Types.PoolRetirementCertT>;
   instantaneousRewards?: Array<{
     index: number;
     pot: number;
@@ -208,7 +207,7 @@ export type TransactionCertificates = {
     }>;
     value: string;
   }>;
-  genesisDelegations?: Array<DbTypes.GenDelegationCertT>;
+  genesisDelegations?: Array<Types.GenDelegationCertT>;
 };
 
 export type Transaction = {
@@ -226,23 +225,23 @@ export type Transaction = {
   outputs: Array<TransactionOutput>;
   collateralOutput?: TransactionOutput;
   totalCollateral?: string;
-  referenceInputs?: Array<DbTypes.ReferenceInput>;
+  referenceInputs?: Array<Types.ReferenceInput>;
   certificate?: TransactionCertificates;
   withdrawals?: Array<{
     rewardAddress: string;
     amount: string;
   }>;
-  metadata?: DbTypes.Metadata;
+  metadata?: Types.Metadata;
   update?: {
     proposals: Array<{
       genesisHash: string;
-      parameter: DbTypes.ProtocolParameter;
+      parameter: Types.ProtocolParameter;
     }>;
     epoch: number;
   };
-  mint?: Array<DbTypes.Token>;
+  mint?: Array<Types.Token>;
   scriptDataHash?: string;
-  redeemers?: Array<Redeemer>;
+  redeemers?: Array<Types.Redeemer>;
   status: boolean;
   ttl?: {
     timestamp: Date;
