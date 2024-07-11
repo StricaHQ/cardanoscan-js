@@ -15,7 +15,7 @@ import {
 } from "./apis/pools";
 import { getStakeKeyDetails, getAddressesByStakeKey } from "./apis/rewardAccount";
 import { getTransactionDetails, getTransactionListByAddress } from "./apis/transaction";
-import { getNetworkDetails } from "./apis/network";
+import { getNetworkDetails, getNetworkProtocolDetails } from "./apis/network";
 
 // eslint-disable-next-line import/prefer-default-export
 export class CardanoscanAPI {
@@ -110,5 +110,9 @@ export class CardanoscanAPI {
   /* Network */
   getNetworkDetails(): Promise<resTypes.NetworkState> {
     return getNetworkDetails(this.instance);
+  }
+
+  getNetworkProtocolDetails(): Promise<resTypes.NetworkProtocol> {
+    return getNetworkProtocolDetails(this.instance);
   }
 }

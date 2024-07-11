@@ -255,3 +255,22 @@ export type PaginatedTransactions = {
   transactions: Array<Transaction>;
   count: number;
 };
+
+export type NetworkProtocol = {
+  minFeeA: string;
+  minFeeB: string;
+  stakeKeyDeposit: string;
+  lovelacePerUtxoWord: string;
+  collateralPercent: string;
+  priceSteps: string;
+  priceMem: string;
+  poolDeposit: string;
+  maxTokenValue: string;
+  networkMagic: number;
+  maxTxSize: string;
+  maxValueSize: string;
+  utxoCostPerByte: string;
+  languageView: {
+    PlutusScriptV1: Types.LanguageView;
+  };
+};
