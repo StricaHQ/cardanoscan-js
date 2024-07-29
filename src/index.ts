@@ -25,7 +25,7 @@ import {
   getTransactionListByAddress,
   getTransactionSummary,
 } from "./apis/transaction";
-import { getNetworkDetails } from "./apis/network";
+import { getNetworkDetails, getNetworkProtocolDetails } from "./apis/network";
 import { getUTXOList } from "./apis/utxo";
 
 // eslint-disable-next-line import/prefer-default-export
@@ -139,6 +139,10 @@ export class CardanoscanAPI {
   /* Network */
   getNetworkDetails(): Promise<resTypes.NetworkState> {
     return getNetworkDetails(this.instance);
+  }
+
+  getNetworkProtocolDetails(): Promise<resTypes.NetworkProtocol> {
+    return getNetworkProtocolDetails(this.instance);
   }
 
   /* UTXO */

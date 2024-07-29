@@ -51,13 +51,11 @@ export type GetPoolListParams = {
 
 export type GetPoolListExpireParams = {
   pageNo: number;
-  search?: string;
   limit?: number;
 };
 
 export type GetExpiredPoolsParams = {
   pageNo: number;
-  search?: string;
   limit?: number;
 };
 
