@@ -22,6 +22,16 @@ export type GetAssetByAddressParams = {
   limit?: number;
 };
 
+export type GetAssetHoldersByPolicyIdParams = {
+  policyId: string;
+  pageNo: number;
+  limit?: number;
+};
+
+export type GetAssetsMetadataParams = {
+  assetIds: Array<string>;
+};
+
 export type GetPoolDetails = {
   poolId: string;
 };
@@ -71,3 +81,12 @@ export type GetTransactionListByAddressParams = {
   limit?: number;
   order?: "asc" | "desc";
 };
+
+export type GetTransactionSummaryParams = {
+  hash: string;
+};
+
+export type GetUtxoListParams = { pageNo: number; limit?: number } & (
+  | { paymentAddress: string }
+  | { rewardAddress: string }
+);
