@@ -1,3 +1,5 @@
+import * as Types from "./core";
+
 export type Address = {
   hash: string;
   balance: string;
@@ -17,14 +19,23 @@ export type Block = {
   totalOutput: string;
   slotLeader: string | null;
   bodySize: number;
+  protocolVersion?: string;
   vrfVKey?: string;
+  nonceVrf?: {
+    natural: string;
+    cert: string;
+  };
+  leaderVrf?: {
+    natural: string;
+    cert: string;
+  };
+  vrfResult?: Array<string>;
   operationalCert?: {
     hotVKey: string;
     sequenceNumber: number;
     kesPeriod: number;
     sigma: string;
   };
-  protocolVersion?: string;
 };
 
 export type PaginatedBlocks = {
@@ -37,8 +48,8 @@ export type PaginatedBlocks = {
 export type NetworkState =
   | {
       circulatingSupply: string;
-      treasury: string;
       reserves: string;
+      treasury: string;
       liveCirculatingSupply: string;
     }
   | undefined;
@@ -113,19 +124,17 @@ export type Token = {
 };
 
 export type PaginatedTokens = {
-  tokens: Array<Token>;
-  count: number;
   pageNo: number;
   limit: number;
+  tokens: Array<Token>;
+  count: number;
 };
 
 export type StakeKeyDetails = {
   poolId?: string | null;
-  stakeHex: string;
-  stakePub?: string;
+  rewardAddress: string;
   stake?: string;
   status?: boolean;
-  pointer?: string;
   rewardsAvailable?: string;
   rewardsWithdrawn?: string;
 };
@@ -149,12 +158,11 @@ export type TransactionInput = {
     assetId: string;
     value: string;
   }>;
-  data?: {
+  datum?: {
     hash: string;
     value: string;
   };
-  // TODO: fix type
-  // scriptRef?: DbTypes.ScriptRef;
+  scriptRef?: Types.ScriptRef;
 };
 
 export type TransactionOutput = {
@@ -167,42 +175,39 @@ export type TransactionOutput = {
     assetId: string;
     value: string;
   }>;
-  data?: {
+  datum?: {
     hash: string;
     value: string;
   };
-  // TODO: fix type
-  // scriptRef?: DbTypes.ScriptRef;
+  scriptRef?: Types.ScriptRef;
 };
 
 export type TransactionCertificates = {
   stakeRegistrations?: Array<{
     index: number;
-    stakeHex: string;
+    rewardAddress: string;
   }>;
   stakeDeRegistrations?: Array<{
     index: number;
-    stakeHex: string;
+    rewardAddress: string;
   }>;
   stakeDelegations?: Array<{
     index: number;
-    stakeHex: string;
+    rewardAddress: string;
     poolKeyHash: string;
   }>;
-  // TODO: fix type
-  // poolRegistrations?: Array<DbTypes.PoolRegistrationCertT>;
-  // poolDeRegistrations?: Array<DbTypes.PoolRetirementCertT>;
-  instantRewards?: Array<{
+  poolRegistrations?: Array<Types.PoolRegistrationCertT>;
+  poolDeRegistrations?: Array<Types.PoolRetirementCertT>;
+  instantaneousRewards?: Array<{
     index: number;
     pot: number;
     rewards: Array<{
-      stakeHex: string;
+      rewardAddress: string;
       amount: string;
     }>;
     value: string;
   }>;
-  // TODO: fix type
-  // genesisDelegations?: Array<DbTypes.GenDelegationCertT>;
+  genesisDelegations?: Array<Types.GenDelegationCertT>;
 };
 
 export type Transaction = {
@@ -214,35 +219,29 @@ export type Transaction = {
   blockHeight: number;
   absSlot: number;
   timestamp: Date;
-  totalOutput: string;
   index: number;
   inputs: Array<TransactionInput>;
   collateral?: Array<TransactionInput>;
   outputs: Array<TransactionOutput>;
   collateralOutput?: TransactionOutput;
   totalCollateral?: string;
-  // TODO: fix type
-  // referenceInputs?: Array<DbTypes.ReferenceInput>;
+  referenceInputs?: Array<Types.ReferenceInput>;
   certificate?: TransactionCertificates;
   withdrawals?: Array<{
-    stakeHex: string;
+    rewardAddress: string;
     amount: string;
   }>;
-  // TODO: fix type
-  // metadata?: DbTypes.Metadata;
+  metadata?: Types.Metadata;
   update?: {
     proposals: Array<{
       genesisHash: string;
-      // TODO: fix type
-      // parameter: DbTypes.ProtocolParameter;
+      parameter: Types.ProtocolParameter;
     }>;
     epoch: number;
   };
-  // TODO: fix type
-  // mint?: Array<DbTypes.Token>;
+  mint?: Array<Types.Token>;
   scriptDataHash?: string;
-  // TODO: fix type
-  // redeemers?: Array<Redeemer>;
+  redeemers?: Array<Types.Redeemer>;
   status: boolean;
   ttl?: {
     timestamp: Date;
@@ -251,8 +250,27 @@ export type Transaction = {
 };
 
 export type PaginatedTransactions = {
-  transactions: Array<Transaction>;
-  count: number;
   pageNo: number;
   limit: number;
+  transactions: Array<Transaction>;
+  count: number;
+};
+
+export type NetworkProtocol = {
+  minFeeA: string;
+  minFeeB: string;
+  stakeKeyDeposit: string;
+  lovelacePerUtxoWord: string;
+  collateralPercent: string;
+  priceSteps: string;
+  priceMem: string;
+  poolDeposit: string;
+  maxTokenValue: string;
+  networkMagic: number;
+  maxTxSize: string;
+  maxValueSize: string;
+  utxoCostPerByte: string;
+  languageView: {
+    PlutusScriptV1: Types.LanguageView;
+  };
 };
