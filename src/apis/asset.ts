@@ -29,3 +29,26 @@ export async function getAssetsByAddress(
   });
   return response.data;
 }
+
+export async function getAssetHoldersByPolicyId(
+  instance: AxiosInstance,
+  params: reqTypes.GetAssetHoldersByPolicyIdParams
+): Promise<resTypes.PaginatedAssetHoldersByPolicy> {
+  const response = await instance.get<resTypes.PaginatedAssetHoldersByPolicy>(
+    "/asset/holders/byPolicyId",
+    {
+      params,
+    }
+  );
+  return response.data;
+}
+
+export async function getAssetsMetadata(
+  instance: AxiosInstance,
+  params: reqTypes.GetAssetsMetadataParams
+): Promise<resTypes.PaginatedAssetsMetadata> {
+  const response = await instance.get<resTypes.PaginatedAssetsMetadata>("/asset/metadata", {
+    params,
+  });
+  return response.data;
+}

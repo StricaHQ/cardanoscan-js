@@ -19,3 +19,13 @@ export async function getTransactionListByAddress(
   });
   return response.data;
 }
+
+export async function getTransactionSummary(
+  instance: AxiosInstance,
+  params: reqTypes.GetTransactionSummaryParams
+): Promise<resTypes.TransactionSummary> {
+  const response = await instance.get<resTypes.TransactionSummary>("/transaction/summary", {
+    params,
+  });
+  return response.data;
+}

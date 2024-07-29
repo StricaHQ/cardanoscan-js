@@ -4,7 +4,13 @@ import * as reqTypes from "./types/reqTypes";
 import * as resTypes from "./types/resTypes";
 
 import { getAddressBalance } from "./apis/address";
-import { getAssetDetails, getAssetsByPolicyId, getAssetsByAddress } from "./apis/asset";
+import {
+  getAssetDetails,
+  getAssetsByPolicyId,
+  getAssetsByAddress,
+  getAssetHoldersByPolicyId,
+  getAssetsMetadata,
+} from "./apis/asset";
 import { getBlockDetails, getLatestBlockDetails } from "./apis/block";
 import {
   getPoolDetails,
@@ -14,8 +20,13 @@ import {
   getExpiredPools,
 } from "./apis/pools";
 import { getStakeKeyDetails, getAddressesByStakeKey } from "./apis/rewardAccount";
-import { getTransactionDetails, getTransactionListByAddress } from "./apis/transaction";
+import {
+  getTransactionDetails,
+  getTransactionListByAddress,
+  getTransactionSummary,
+} from "./apis/transaction";
 import { getNetworkDetails, getNetworkProtocolDetails } from "./apis/network";
+import { getUTXOList } from "./apis/utxo";
 
 // eslint-disable-next-line import/prefer-default-export
 export class CardanoscanAPI {
@@ -49,6 +60,18 @@ export class CardanoscanAPI {
 
   getAssetsByAddress(params: reqTypes.GetAssetByAddressParams): Promise<resTypes.PaginatedTokens> {
     return getAssetsByAddress(this.instance, params);
+  }
+
+  getAssetHoldersByPolicyId(
+    params: reqTypes.GetAssetHoldersByPolicyIdParams
+  ): Promise<resTypes.PaginatedAssetHoldersByPolicy> {
+    return getAssetHoldersByPolicyId(this.instance, params);
+  }
+
+  getAssetsMetadata(
+    params: reqTypes.GetAssetsMetadataParams
+  ): Promise<resTypes.PaginatedAssetsMetadata> {
+    return getAssetsMetadata(this.instance, params);
   }
 
   /* Blocks */
@@ -107,6 +130,12 @@ export class CardanoscanAPI {
     return getTransactionListByAddress(this.instance, params);
   }
 
+  getTransactionSummary(
+    params: reqTypes.GetTransactionSummaryParams
+  ): Promise<resTypes.TransactionSummary> {
+    return getTransactionSummary(this.instance, params);
+  }
+
   /* Network */
   getNetworkDetails(): Promise<resTypes.NetworkState> {
     return getNetworkDetails(this.instance);
@@ -114,5 +143,10 @@ export class CardanoscanAPI {
 
   getNetworkProtocolDetails(): Promise<resTypes.NetworkProtocol> {
     return getNetworkProtocolDetails(this.instance);
+  }
+
+  /* UTXO */
+  getUTXOList(params: reqTypes.GetUtxoListParams): Promise<resTypes.PaginatedUtxos> {
+    return getUTXOList(this.instance, params);
   }
 }
