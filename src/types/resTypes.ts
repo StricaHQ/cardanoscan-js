@@ -347,6 +347,8 @@ export type Utxo = {
     value: string;
   }>;
   data?: { hash: string; value?: string };
+  txId: string;
+  index: number;
 };
 
 export type PaginatedUtxos = {
