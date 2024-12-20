@@ -274,3 +274,86 @@ export type NetworkProtocol = {
     PlutusScriptV1: Types.LanguageView;
   };
 };
+
+export type AssetHoldersByPolicy = {
+  address: string;
+  policyId: string;
+  assetName: string;
+  fingerprint: string;
+  assetId: string;
+  balance: string;
+};
+
+export type PaginatedAssetHoldersByPolicy = {
+  holders: Array<AssetHoldersByPolicy>;
+  count: number;
+  pageNo: number;
+  limit: number;
+};
+
+export type AssetMetadata = {
+  assetId: string;
+  policyId: string;
+  assetName: string;
+  decimals: number;
+  name?: string;
+  description?: string;
+  image?: {
+    src: string;
+    type: string;
+  };
+  ticker?: string;
+  url?: string;
+  logo?: {
+    src: string;
+    type: string;
+  };
+};
+
+export type PaginatedAssetsMetadata = {
+  metadataList: Array<AssetMetadata>;
+};
+
+export type TransactionSummary = {
+  hash: string;
+  summary: Array<{
+    wallet: string;
+    amount: string;
+    sentTokens: Array<{
+      policyId: string;
+      assetName: string;
+      fingerprint: string;
+      assetId: string;
+      value: string;
+    }>;
+    receivedTokens: Array<{
+      policyId: string;
+      assetName: string;
+      fingerprint: string;
+      assetId: string;
+      value: string;
+    }>;
+  }>;
+};
+
+export type Utxo = {
+  address: string;
+  amount: string;
+  assets?: Array<{
+    policyId: string;
+    assetName: string;
+    fingerprint: string;
+    assetId: string;
+    value: string;
+  }>;
+  data?: { hash: string; value?: string };
+  txId: string;
+  index: number;
+};
+
+export type PaginatedUtxos = {
+  utxos: Array<Utxo>;
+  count: number;
+  pageNo: number;
+  limit: number;
+};
