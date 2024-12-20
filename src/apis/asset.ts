@@ -43,6 +43,19 @@ export async function getAssetHoldersByPolicyId(
   return response.data;
 }
 
+export async function getAssetHoldersByAssetId(
+  instance: AxiosInstance,
+  params: reqTypes.GetAssetHoldersByAssetIdParams
+): Promise<resTypes.PaginatedAssetHoldersByAssetId> {
+  const response = await instance.get<resTypes.PaginatedAssetHoldersByAssetId>(
+    "/asset/holders/byAssetId",
+    {
+      params,
+    }
+  );
+  return response.data;
+}
+
 export async function getAssetsMetadata(
   instance: AxiosInstance,
   params: reqTypes.GetAssetsMetadataParams
