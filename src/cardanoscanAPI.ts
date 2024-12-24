@@ -76,8 +76,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   getAssetHoldersByPolicyId(
     params: reqTypes.GetAssetHoldersByPolicyIdParams
@@ -87,8 +85,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   getAssetHoldersByAssetId(
     params: reqTypes.GetAssetHoldersByAssetIdParams
@@ -98,8 +94,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   getAssetsMetadata(
     params: reqTypes.GetAssetsMetadataParams
@@ -205,8 +199,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   postSubmitTransaction(params: reqTypes.postSubmitTransactionParams): Promise<void> {
     return postSubmitTransaction(this.instance, params);
@@ -214,8 +206,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   getTransactionSummary(
     params: reqTypes.GetTransactionSummaryParams
@@ -227,8 +217,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   getUTXOList(params: reqTypes.GetUtxoListParams): Promise<resTypes.PaginatedUtxos> {
     return getUTXOList(this.instance, params);
@@ -238,8 +226,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   getVotesByVoter(params: reqTypes.GetVotesByVoterParams): Promise<resTypes.PaginatedVotes> {
     return getVotesByVoter(this.instance, params);
@@ -247,8 +233,6 @@ export class CardanoscanAPI {
 
   /**
    * Only available in PRO plan
-   * @param params
-   * @returns
    */
   getVotesByAction(params: reqTypes.GetVotesByActionParams): Promise<resTypes.PaginatedVotes> {
     return getVotesByAction(this.instance, params);
