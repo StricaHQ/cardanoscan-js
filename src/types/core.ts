@@ -130,3 +130,36 @@ export type ReferenceInput = {
 export type LanguageView = {
   [key: string]: number;
 };
+
+export type Anchor = {
+  url: string;
+  hash: string;
+};
+
+export enum CommitteeStatus {
+  CONFIDENCE = 1,
+  NO_CONFIDENCE = 0,
+}
+
+export enum CCMemberStatus {
+  ACTIVE = 0,
+  REMOVED = 1,
+  RESIGNED = 2,
+  INACTIVE = 3,
+}
+
+export enum GovActionType {
+  PARAM_CHANGE_ACTION = 0,
+  HF_INIT_ACTION = 1,
+  TREASURY_WITHDRAW_ACTION = 2,
+  NO_CONFIDENCE_ACTION = 3,
+  UPDATE_COMMITTEE_ACTION = 4,
+  NEW_CONSTITUTION_ACTION = 5,
+  INFO_ACTION = 6,
+}
+
+export enum VoteType {
+  NO = 0,
+  YES = 1,
+  ABSTAIN = 2,
+}

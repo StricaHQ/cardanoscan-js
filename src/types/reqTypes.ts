@@ -28,6 +28,12 @@ export type GetAssetHoldersByPolicyIdParams = {
   limit?: number;
 };
 
+export type GetAssetHoldersByAssetIdParams = {
+  assetId: string;
+  pageNo: number;
+  limit?: number;
+};
+
 export type GetAssetsMetadataParams = {
   assetIds: Array<string>;
 };
@@ -80,6 +86,10 @@ export type GetTransactionListByAddressParams = {
   order?: "asc" | "desc";
 };
 
+export type postSubmitTransactionParams = {
+  tx: Buffer;
+};
+
 export type GetTransactionSummaryParams = {
   hash: string;
 };
@@ -88,3 +98,43 @@ export type GetUtxoListParams = { pageNo: number; limit?: number } & (
   | { paymentAddress: string }
   | { rewardAddress: string }
 );
+
+export type GetCCHotDetailsParams = {
+  hotHex: string;
+};
+
+export type GetCCMemberDetailsParams = {
+  coldHex: string;
+};
+
+export type GetCommitteeMembersParams = {
+  pageNo: number;
+  limit: number;
+  includeExpired: boolean;
+};
+
+export type GetDRepInformationParams = {
+  dRepId: string;
+};
+
+export type GetDRepListParams = {
+  pageNo: number;
+  limit: number;
+  search: string | undefined;
+};
+
+export type GetGovActionParams = {
+  actionId: string;
+};
+
+export type GetVotesByVoterParams = {
+  pageNo: number;
+  limit: number;
+  voterHex: string;
+};
+
+export type GetVotesByActionParams = {
+  pageNo: number;
+  limit: number;
+  actionId: string;
+};

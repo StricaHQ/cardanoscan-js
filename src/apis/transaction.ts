@@ -20,6 +20,18 @@ export async function getTransactionListByAddress(
   return response.data;
 }
 
+export async function postSubmitTransaction(
+  instance: AxiosInstance,
+  params: reqTypes.postSubmitTransactionParams
+): Promise<void> {
+  const response = await instance.post<void>("/transaction/submit", params.tx, {
+    headers: {
+      "Content-Type": "application/cbor",
+    },
+  });
+  return response.data;
+}
+
 export async function getTransactionSummary(
   instance: AxiosInstance,
   params: reqTypes.GetTransactionSummaryParams
