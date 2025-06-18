@@ -5,16 +5,16 @@ import * as resTypes from "../types/resTypes";
 export async function getPoolDetails(
   instance: AxiosInstance,
   params: reqTypes.GetPoolDetails
-): Promise<resTypes.Pool> {
-  const response = await instance.get<resTypes.Pool>("/pool", { params });
+): Promise<resTypes.Pool | undefined> {
+  const response = await instance.get<resTypes.Pool | undefined>("/pool", { params });
   return response.data;
 }
 
 export async function getPoolStats(
   instance: AxiosInstance,
   params: reqTypes.GetPoolStatsParams
-): Promise<resTypes.PoolStats> {
-  const response = await instance.get<resTypes.PoolStats>("/pool/stats", { params });
+): Promise<resTypes.PoolStats | undefined> {
+  const response = await instance.get<resTypes.PoolStats | undefined>("/pool/stats", { params });
   return response.data;
 }
 

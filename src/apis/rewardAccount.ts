@@ -5,8 +5,10 @@ import * as resTypes from "../types/resTypes";
 export async function getStakeKeyDetails(
   instance: AxiosInstance,
   params: reqTypes.GetStakeKeyDetailsParams
-): Promise<resTypes.StakeKeyDetails> {
-  const response = await instance.get<resTypes.StakeKeyDetails>("/rewardAccount", { params });
+): Promise<resTypes.StakeKeyDetails | undefined> {
+  const response = await instance.get<resTypes.StakeKeyDetails | undefined>("/rewardAccount", {
+    params,
+  });
   return response.data;
 }
 

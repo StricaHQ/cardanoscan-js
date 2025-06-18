@@ -5,7 +5,7 @@ import * as resTypes from "../types/resTypes";
 export async function getAssetDetails(
   instance: AxiosInstance,
   params: reqTypes.GetAssetDetailsParams
-): Promise<resTypes.Token> {
+): Promise<resTypes.Token | undefined> {
   const response = await instance.get<resTypes.Token>("/asset", { params });
   return response.data;
 }
@@ -23,8 +23,8 @@ export async function getAssetsByPolicyId(
 export async function getAssetsByAddress(
   instance: AxiosInstance,
   params: reqTypes.GetAssetByAddressParams
-): Promise<resTypes.PaginatedTokens> {
-  const response = await instance.get<resTypes.PaginatedTokens>("/asset/list/byAddress", {
+): Promise<resTypes.PaginatedAddressTokens> {
+  const response = await instance.get<resTypes.PaginatedAddressTokens>("/asset/list/byAddress", {
     params,
   });
   return response.data;

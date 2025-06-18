@@ -60,7 +60,7 @@ export class CardanoscanAPI {
   }
 
   /* Assets */
-  getAssetDetails(params: reqTypes.GetAssetDetailsParams): Promise<resTypes.Token> {
+  getAssetDetails(params: reqTypes.GetAssetDetailsParams): Promise<resTypes.Token | undefined> {
     return getAssetDetails(this.instance, params);
   }
 
@@ -70,7 +70,9 @@ export class CardanoscanAPI {
     return getAssetsByPolicyId(this.instance, params);
   }
 
-  getAssetsByAddress(params: reqTypes.GetAssetByAddressParams): Promise<resTypes.PaginatedTokens> {
+  getAssetsByAddress(
+    params: reqTypes.GetAssetByAddressParams
+  ): Promise<resTypes.PaginatedAddressTokens> {
     return getAssetsByAddress(this.instance, params);
   }
 
@@ -111,15 +113,17 @@ export class CardanoscanAPI {
   }
 
   /* Governance */
-  getCCHotDetails(params: reqTypes.GetCCHotDetailsParams): Promise<resTypes.ccHot> {
+  getCCHotDetails(params: reqTypes.GetCCHotDetailsParams): Promise<resTypes.ccHot | undefined> {
     return getCCHotDetails(this.instance, params);
   }
 
-  getCCMemberDetails(params: reqTypes.GetCCMemberDetailsParams): Promise<resTypes.ccMember> {
+  getCCMemberDetails(
+    params: reqTypes.GetCCMemberDetailsParams
+  ): Promise<resTypes.ccMember | undefined> {
     return getCCMemberDetails(this.instance, params);
   }
 
-  getCommitteeInformation(): Promise<resTypes.Committee> {
+  getCommitteeInformation(): Promise<resTypes.Committee | undefined> {
     return getCommitteeInformation(this.instance);
   }
 
@@ -129,7 +133,9 @@ export class CardanoscanAPI {
     return getCommitteeMembers(this.instance, params);
   }
 
-  getDRepInformation(params: reqTypes.GetDRepInformationParams): Promise<resTypes.DRep> {
+  getDRepInformation(
+    params: reqTypes.GetDRepInformationParams
+  ): Promise<resTypes.DRep | undefined> {
     return getDRepInformation(this.instance, params);
   }
 
@@ -137,7 +143,9 @@ export class CardanoscanAPI {
     return getDReps(this.instance, params);
   }
 
-  getGovernanceAction(params: reqTypes.GetGovActionParams): Promise<resTypes.GovActionResponse> {
+  getGovernanceAction(
+    params: reqTypes.GetGovActionParams
+  ): Promise<resTypes.GovActionResponse | undefined> {
     return getGovernanceAction(this.instance, params);
   }
 
@@ -146,16 +154,16 @@ export class CardanoscanAPI {
     return getNetworkDetails(this.instance);
   }
 
-  getNetworkProtocolDetails(): Promise<resTypes.NetworkProtocol> {
+  getNetworkProtocolDetails(): Promise<resTypes.NetworkProtocol | null> {
     return getNetworkProtocolDetails(this.instance);
   }
 
   /* Pools */
-  getPoolDetails(params: reqTypes.GetPoolDetails): Promise<resTypes.Pool> {
+  getPoolDetails(params: reqTypes.GetPoolDetails): Promise<resTypes.Pool | undefined> {
     return getPoolDetails(this.instance, params);
   }
 
-  getPoolStats(params: reqTypes.GetPoolStatsParams): Promise<resTypes.PoolStats> {
+  getPoolStats(params: reqTypes.GetPoolStatsParams): Promise<resTypes.PoolStats | undefined> {
     return getPoolStats(this.instance, params);
   }
 
@@ -174,7 +182,9 @@ export class CardanoscanAPI {
   }
 
   /* Reward Account */
-  getStakeKeyDetails(params: reqTypes.GetStakeKeyDetailsParams): Promise<resTypes.StakeKeyDetails> {
+  getStakeKeyDetails(
+    params: reqTypes.GetStakeKeyDetailsParams
+  ): Promise<resTypes.StakeKeyDetails | undefined> {
     return getStakeKeyDetails(this.instance, params);
   }
 
@@ -187,7 +197,7 @@ export class CardanoscanAPI {
   /* Transaction */
   getTransactionDetails(
     params: reqTypes.GetTransactionDetailsParams
-  ): Promise<resTypes.Transaction> {
+  ): Promise<resTypes.Transaction | undefined> {
     return getTransactionDetails(this.instance, params);
   }
 
