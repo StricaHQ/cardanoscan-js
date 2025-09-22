@@ -140,6 +140,21 @@ export type PaginatedTokens = {
   count: number;
 };
 
+export type AddressTokenResponse = {
+  policyId: string;
+  assetName: string;
+  fingerprint: string;
+  assetId: string;
+  balance: string;
+};
+
+export type PaginatedAddressTokens = {
+  tokens: Array<AddressTokenResponse>;
+  count: number;
+  pageNo: number;
+  limit: number;
+};
+
 export type StakeKeyDetails = {
   poolId: string | null | undefined;
   rewardAddress: string;
@@ -329,7 +344,7 @@ export type AssetHoldersByAssetId = {
 };
 
 export type PaginatedAssetHoldersByAssetId = {
-  holders: Array<AssetHoldersByPolicy>;
+  holders: Array<AssetHoldersByAssetId>;
   count: number;
   pageNo: number;
   limit: number;

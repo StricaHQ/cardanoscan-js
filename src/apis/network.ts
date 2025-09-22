@@ -8,7 +8,7 @@ export async function getNetworkDetails(instance: AxiosInstance): Promise<resTyp
 
 export async function getNetworkProtocolDetails(
   instance: AxiosInstance
-): Promise<resTypes.NetworkProtocol> {
-  const response = await instance.get<resTypes.NetworkProtocol>("/network/protocolParams");
+): Promise<resTypes.NetworkProtocol | null> {
+  const response = await instance.get<resTypes.NetworkProtocol | null>("/network/protocolParams");
   return response.data;
 }

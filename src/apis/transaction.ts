@@ -5,8 +5,8 @@ import * as resTypes from "../types/resTypes";
 export async function getTransactionDetails(
   instance: AxiosInstance,
   params: reqTypes.GetTransactionDetailsParams
-): Promise<resTypes.Transaction> {
-  const response = await instance.get<resTypes.Transaction>("/transaction", { params });
+): Promise<resTypes.Transaction | undefined> {
+  const response = await instance.get<resTypes.Transaction | undefined>("/transaction", { params });
   return response.data;
 }
 
