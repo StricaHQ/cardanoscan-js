@@ -1,6 +1,6 @@
 {
   "name": "@stricahq/cardanoscan-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cardanoscan API Service Javascript SDK",
   "main": "dist/index.js",
   "keywords": [
