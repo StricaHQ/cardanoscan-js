@@ -732,3 +732,13 @@ export type PaginatedVotes = {
   pageNo: number;
   limit: number;
 };
+
+export type DailyTxFeeResponse = {
+  startDate: string;
+  endDate: string;
+  order: "asc" | "desc";
+  result: Array<{
+    date: string;
+    fee: string;
+  }>;
+};

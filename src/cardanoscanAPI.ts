@@ -39,6 +39,7 @@ import {
   getGovernanceAction,
 } from "./apis/governance";
 import { getVotesByAction, getVotesByVoter } from "./apis/votes";
+import { getStatsDailyTxFee } from "./apis/stats";
 
 // eslint-disable-next-line import/prefer-default-export
 export class CardanoscanAPI {
@@ -246,5 +247,16 @@ export class CardanoscanAPI {
    */
   getVotesByAction(params: reqTypes.GetVotesByActionParams): Promise<resTypes.PaginatedVotes> {
     return getVotesByAction(this.instance, params);
+  }
+
+  /* Stats */
+
+  /**
+   * Only available in PRO plan
+   */
+  getStatsDailyTxFee(
+    params: reqTypes.GetStatsDailyTxFeeParams
+  ): Promise<resTypes.DailyTxFeeResponse> {
+    return getStatsDailyTxFee(this.instance, params);
   }
 }
