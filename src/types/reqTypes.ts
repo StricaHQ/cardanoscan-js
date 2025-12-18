@@ -138,3 +138,9 @@ export type GetVotesByActionParams = {
   limit: number;
   actionId: string;
 };
+
+export type GetStatsDailyTxFeeParams = {
+  startDate: string;
+  endDate: string;
+  order: "asc" | "desc";
+};
